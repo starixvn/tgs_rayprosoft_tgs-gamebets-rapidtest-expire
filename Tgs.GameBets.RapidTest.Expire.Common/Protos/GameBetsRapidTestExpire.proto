@@ -1,0 +1,13 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Tgs.GameBets.RapidTest.Expire.Common.Protos";
+
+package GameBetsRapidTestExpire;
+
+// The greeting service definition.
+
+
+// The request message containing the user's name.
+message GameBetsRapidTestExpireRequest {
+    string game_provider_code = 1;
+}

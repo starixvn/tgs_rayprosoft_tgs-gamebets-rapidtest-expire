@@ -1,0 +1,6 @@
+@Tgs.GameBets.RapidTest.Expire_HostAddress = http://localhost:5079
+
+GET {{Tgs.GameBets.RapidTest.Expire_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
