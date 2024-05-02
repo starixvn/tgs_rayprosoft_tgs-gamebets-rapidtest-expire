@@ -152,6 +152,7 @@ deploy-staging:
     name: staging
   stage: deploy-staging
   needs:
+    - push-docker-image
     - job: push-k8s-template
       artifacts: true
   only:
