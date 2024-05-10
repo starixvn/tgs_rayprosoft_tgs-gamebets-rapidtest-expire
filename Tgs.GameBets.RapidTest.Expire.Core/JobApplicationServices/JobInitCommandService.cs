@@ -49,7 +49,7 @@ internal class JobInitCommandService(
 				RecurringJob.AddOrUpdate<IHangfireUtensil>(
 					recurringJobId: gameProviderCode,
 					methodCall: service => service.JobExecuteAsync(jobExecuteCommand),
-					cronExpression: Cron.Minutely(),
+					cronExpression: "2-59/1 * * * *",
 					options: new RecurringJobOptions()
 					{
 						TimeZone = TimeZoneInfo.FindSystemTimeZoneById(RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "China Standard Time" : "Asia/Shanghai")
