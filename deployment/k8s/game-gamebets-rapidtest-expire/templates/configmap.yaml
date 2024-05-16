@@ -9,7 +9,7 @@ data:
       "Logging": {
         "LogLevel": {
           "Default": "Warning",
-          "Tgs.GameBets.RapidTest.Expire.Messages": "Information"
+          "Tgs.GameBets.RapidTest.Expire.Messages": "Warning"
         }
       },
       "GameBetsRapidTestExpireConnectionStrings": {
