@@ -7,14 +7,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Grpc.AspNetCore" Version="2.62.0" />
-		<PackageReference Include="Hangfire.AspNetCore" Version="1.8.12" />
+		<PackageReference Include="Grpc.AspNetCore" Version="2.63.0" />
+		<PackageReference Include="Hangfire.AspNetCore" Version="1.8.14" />
 		<PackageReference Include="Hangfire.Dashboard.Management" Version="1.7.9" />
 		<PackageReference Include="Hangfire.Redis.StackExchange" Version="1.9.3" />
 		<PackageReference Include="PhoenixToolkits.MessageQueue" Version="2.2.0" />
 		<PackageReference Include="PhoenixToolkits.MessageQueue.Nats" Version="2.2.0" />
-		<PackageReference Include="Polly" Version="8.3.1" />
-		<PackageReference Include="StackExchange.Redis" Version="2.7.33" />
+		<PackageReference Include="Polly" Version="8.4.1" />
+		<PackageReference Include="StackExchange.Redis" Version="2.8.0" />
 		<PackageReference Include="System.Linq.Async" Version="6.0.1" />
 		<PackageReference Include="Tgs.GameBets.RapidTest.Client" Version="1.0.1" />
 		<PackageReference Include="Tgs.GameRounds.Client" Version="1.0.0" />

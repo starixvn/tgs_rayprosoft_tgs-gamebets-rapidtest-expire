@@ -2,6 +2,7 @@
 using Tgs.GameBets.RapidTest.Expire.Core.ApplicationServices;
 
 namespace Tgs.GameBets.RapidTest.Expire.Core.UnitTest.ApplicationServices;
+
 public class GameBetRapidTestExpireCommandServiceUnitTest
 {
 	[Fact]
