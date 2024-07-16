@@ -1,6 +1,7 @@
-﻿using Tgs.ServiceUtility;
+﻿using Tgs.GameBets.RapidTest.Expire.Core.ApplicationServices;
+
+using Tgs.ServiceUtility;
 using Valhalla.MessageQueue;
-using Tgs.GameBets.RapidTest.Expire.Core.ApplicationServices;
 
 namespace Tgs.GameBets.RapidTest.Expire.Messages;
 

@@ -9,12 +9,13 @@ using OpenTelemetry.Instrumentation.AspNetCore;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
+using Tgs.GameBets.RapidTest.Expire;
+
 using Tgs.GameBets.RapidTest.Expire.Common;
 using Tgs.GameBets.RapidTest.Expire.Core;
+using Tgs.GameBets.RapidTest.Expire.DependencyInjection;
 using Tgs.GameBets.RapidTest.Expire.Messages;
 using Tgs.MessageQueue.Nats.Serializers;
-using Tgs.GameBets.RapidTest.Expire.DependencyInjection;
-using Tgs.GameBets.RapidTest.Expire;
 
 var filterInstrumentations = new[] { "html", "ico", "png", "jpg" };
 
@@ -148,10 +149,9 @@ app.UseHangfireDashboard(
 	new DashboardOptions()
 	{
 		Authorization =
-		new[]
-		{
+		[
 			new IgnoreHangfireAuthorizationFilter()
-		}
+		]
 	});
 
 _ = app.UseAuthorization();

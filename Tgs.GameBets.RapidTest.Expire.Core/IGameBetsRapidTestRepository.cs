@@ -1,4 +1,5 @@
 ﻿namespace Tgs.GameBets.RapidTest.Expire.Core;
+
 public interface IGameBetsRapidTestRepository
 {
 	ValueTask SetExpireAsync(string gameProviderCode, CancellationToken cancellationToken = default);
