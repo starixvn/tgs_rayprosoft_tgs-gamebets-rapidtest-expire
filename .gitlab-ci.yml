@@ -59,7 +59,15 @@ deploy-dev:
     - main
   when: manual
   script:
-    - deploy_k8s $TgsSettingKey $HelmTemplateFolderName $namespace
+   - |
+      cat << EOF | deploy_k8s $TgsSettingKey $HelmTemplateFolderName $namespace
+        {
+          "restart": {
+            "enabled": true,
+            "schedule": " 0 */1 * * *"
+          }          
+        }
+      EOF
 
 deploy-staging:
   extends: .deploy-k8s-template
@@ -85,7 +93,15 @@ deploy-staging:
     - main
   when: manual
   script:
-    - deploy_k8s $TgsSettingKey $HelmTemplateFolderName $namespace
+   - |
+      cat << EOF | deploy_k8s $TgsSettingKey $HelmTemplateFolderName $namespace
+        {
+          "restart": {
+            "enabled": true,
+            "schedule": " 0 */1 * * *"
+          }          
+        }
+      EOF
 
 deploy-prod:
   extends: .deploy-k8s-template
@@ -111,4 +127,12 @@ deploy-prod:
     - main
   when: manual
   script:
-    - deploy_k8s $TgsSettingKey $HelmTemplateFolderName $namespace
+   - |
+      cat << EOF | deploy_k8s $TgsSettingKey $HelmTemplateFolderName $namespace
+        {
+          "restart": {
+            "enabled": true,
+            "schedule": " 0 */1 * * *"
+          }          
+        }
+      EOF
