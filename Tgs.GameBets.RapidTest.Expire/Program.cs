@@ -72,24 +72,30 @@ builder
 	})
 	.AddHangfireServer();
 
-builder.Services.AddGameBetsRapidTestExpire(
-	(sp, dbBuilder) =>
-	{
-		var config = sp.GetRequiredService<IConfiguration>();
-		_ = dbBuilder.UseNpgsql(config.GetConnectionString("Tgs"));
-	},
-	(options, sp) =>
+builder.Services
+	.AddOptions<RedisOptions>()
+	.Configure((RedisOptions options, IServiceProvider sp) =>
 	{
 		var configuration = sp.GetRequiredService<IConfiguration>();
 		options.ConnectionString = configuration.GetConnectionString("Redis")!;
 	})
+	.Services
 	.AddOptions<PolicySettingsOptions>()
 	.Configure((options) => builder.Configuration.GetSection("PolicySettings").Bind(options))
 	.Services
-	.AddGameBetsRapidTestClient(httpClientBuilder => httpClientBuilder.ConfigureHttpClient((sp, http) =>
+	.AddSingleton<RedisConnectionManager>()
+	.AddGameBetsRapidTestExpireCore()
+	.AddGameBetsRapidTestExpireRepositories(
+		dbContextOptions: (sp, dbBuilder) =>
+		{
+			var config = sp.GetRequiredService<IConfiguration>();
+			_ = dbBuilder.UseNpgsql(config.GetConnectionString("Tgs"));
+		},
+		redisDatabaseResolver: (sp) => sp.GetRequiredService<RedisConnectionManager>().Database)
+	.AddGameBetsClient(httpClientBuilder => httpClientBuilder.ConfigureHttpClient((sp, http) =>
 	{
 		var config = sp.GetRequiredService<IConfiguration>();
-		http.BaseAddress = config.GetValue<Uri>("GameBetsRapidTestExpireConnectionStrings:GameBetsRapidTestClientBaseUrl");
+		http.BaseAddress = config.GetValue<Uri>("GameBetsRapidTestExpireConnectionStrings:GameBetsClientBaseUrl");
 	}));
 
 builder.Services
@@ -113,6 +119,7 @@ builder.Services
 		.AddSource("Tgs.*")
 		.AddSource("TGS.*")
 		.AddSource("Valhalla.*")
+		.AddSource("MediatR")
 		.AddAspNetCoreInstrumentation()
 		.AddHttpClientInstrumentation()
 		.AddGrpcClientInstrumentation()
