@@ -13,7 +13,7 @@ data:
         }
       },
       "GameBetsRapidTestExpireConnectionStrings": {
-        "GameBetsRapidTestClientBaseUrl": "http://game-gamebets-rapidtest/"
+        "GameBetsClientBaseUrl": "http://game-gamebets/"
       }
     }
   otel-collector-config.yaml: |
